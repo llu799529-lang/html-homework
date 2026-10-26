@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lyb · JavaScript 练习首页</title>
+    <!--
+      作者：lyb
+      建立时间：2026-10-26
+      使用的大模型：DeepSeek-V4.1-Flash
+      功能名称：练习总入口（页面导航 + 规则说明 + 提示词记录）
+    -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            padding: 44px 24px 60px;
+            background: #f5f6f8;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+            color: #1f2329;
+        }
+
+        .wrap { max-width: 1040px; margin: 0 auto; }
+
+        h1 { font-size: 27px; font-weight: 600; letter-spacing: .5px; }
+
+        .sub { margin-top: 10px; font-size: 14px; color: #646a73; }
+
+        .meta {
+            margin-top: 14px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 12.5px;
+            color: #8a9099;
+        }
+
+        .meta span {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #eef1f6;
+        }
+
+        h2 {
+            margin-top: 38px;
+            font-size: 16px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e6eb;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        h2 small { font-size: 12px; font-weight: 400; color: #a0a6ad; }
+
+        .cards {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 12px;
+        }
+
+        .card {
+            display: block;
+            padding: 16px 18px;
+            background: #fff;
+            border: 1px solid #e5e6eb;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #1f2329;
+            transition: box-shadow .18s, transform .18s, border-color .18s;
+        }
+
+        .card:hover {
+            border-color: #1d6fe0;
+            box-shadow: 0 8px 22px rgba(29, 111, 224, .12);
+            transform: translateY(-2px);
+        }
+
+        .card b { display: block; font-size: 15px; font-weight: 600; }
+
+        .card span { display: block; margin-top: 7px; font-size: 12.5px; line-height: 1.6; color: #8a9099; }
+
+        .card .no {
+            display: inline-block;
+            width: auto;
+            margin-bottom: 8px;
+            padding: 2px 9px;
+            border-radius: 6px;
+            background: #e8f3ff;
+            color: #1d6fe0;
+            font-size: 11.5px;
+            font-weight: 600;
+        }
+
+        ol.rules {
+            margin-top: 16px;
+            list-style: none;
+            counter-reset: r;
+            display: grid;
+            gap: 10px;
+        }
+
+        ol.rules li {
+            counter-increment: r;
+            position: relative;
+            padding: 14px 16px 14px 52px;
+            background: #fff;
+            border: 1px solid #e5e6eb;
+            border-radius: 11px;
+            font-size: 13.5px;
+            line-height: 1.75;
+        }
+
+        ol.rules li::before {
+            content: counter(r);
+            position: absolute;
+            left: 16px;
+            top: 13px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #1f2329;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        ol.rules b { font-weight: 600; }
+
+        code {
+            font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+            font-size: 12.5px;
+            background: #f2f3f5;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        .logs { margin-top: 16px; display: grid; gap: 10px; }
+
+        .log {
+            padding: 14px 16px;
+            background: #fff;
+            border: 1px solid #e5e6eb;
+            border-radius: 11px;
+            border-left: 3px solid #1d6fe0;
+        }
+
+        .log .hd {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            font-size: 12px;
+            color: #8a9099;
+        }
+
+        .log .hd em {
+            font-style: normal;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: #eef1f6;
+            color: #3d4653;
+        }
+
+        .log p { margin-top: 8px; font-size: 13.5px; line-height: 1.75; color: #3d4653; }
+
+        .more { margin-top: 14px; font-size: 12.5px; }
+        .more a { color: #1d6fe0; text-decoration: none; }
+        .more a:hover { text-decoration: underline; }
+
+        footer { margin-top: 44px; font-size: 12.5px; color: #a0a6ad; }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>JavaScript 练习 · 总入口</h1>
+    <p class="sub">每讲一个页面，页面顶部的注释写明作者、建立时间、使用的模型和功能；这一页汇总入口、规则和提示词记录。</p>
+    <div class="meta">
+        <span>lyb</span>
+        <span>计算机24004</span>
+        <span>最后更新 2026-10-26</span>
+    </div>
+
+    <h2>页面入口 <small>点卡片直接打开</small></h2>
+    <div class="cards">
+        <a class="card" href="15-1.html">
+            <span class="no">15-1</span>
+            <b>一百个盒子</b>
+            <span>逢 7 规则：7 的倍数、含 7 的数字显示，其余留白</span>
+        </a>
+        <a class="card" href="15-2.html">
+            <span class="no">15-2</span>
+            <b>程序结构 · 条件 · 循环</b>
+            <span>顺序 / 分支 / 循环，if、switch、for、while 实例</span>
+        </a>
+        <a class="card" href="14-2.html">
+            <span class="no">14-2</span>
+            <b>六种基本数据类型</b>
+            <span>number / string / boolean / undefined / null / object</span>
+        </a>
+    </div>
+
+    <h2>规则 <small>摘自 AGENTS.md</small></h2>
+    <ol class="rules">
+        <li><b>新建 html 必须写注释</b>：在 <code>&lt;head&gt;</code> 里注明作者、建立时间、使用的大模型、功能名称，四项缺一不可。</li>
+        <li><b>提示词要留档</b>：每轮对话结束后，把时间 / 模型 / 提示词追加到 <code>lyb_prompt.md</code>，用 <code>---</code> 分隔，不覆盖旧记录。</li>
+        <li><b>首页要有东西</b>：本页必须列出规则、提示词记录，以及仓库里每个 html 的入口，新增页面后回来同步。</li>
+        <li><b>提交方式</b>：改完先 commit 再 push 到 GitHub，不往提示词里贴明文令牌，用本机已配置的凭据。</li>
+    </ol>
+
+    <h2>提示词记录 <small>最近 4 次</small></h2>
+    <div class="logs">
+        <div class="log">
+            <div class="hd"><em>2026-10-26</em><em>DeepSeek-V4.1-Flash</em></div>
+            <p>编写 14-2.html，展示 JavaScript 的六种基本数据类型，每张卡片含类型徽章、说明、示例代码和 typeof 实时计算结果。</p>
+        </div>
+        <div class="log">
+            <div class="hd"><em>2026-10-26</em><em>DeepSeek-V4.1-Flash</em></div>
+            <p>编写 15-1.html，一百个盒子，里面有数字，按照数 7 的规则（7 的倍数、个位数为 7 的数字等），不满足要求的显示空盒子，满足要求的显示数字。</p>
+        </div>
+        <div class="log">
+            <div class="hd"><em>2026-10-26</em><em>DeepSeek-V4.1-Flash</em></div>
+            <p>修改规则 AGENTS.md，在新建一个 html 文件时都要加入注释，注释包括：作者、建立时间、使用的大模型、功能名称。</p>
+        </div>
+        <div class="log">
+            <div class="hd"><em>2026-10-26</em><em>DeepSeek-V4.1-Flash</em></div>
+            <p>编写 15-2.html，展示 JavaScript 的程序结构、循环、条件；首页 index.html 要有规则、提示词记录和 14-2 / 15-1 / 15-2 的入口。</p>
+        </div>
+    </div>
+    <p class="more">完整记录见 <a href="lyb_prompt.md">lyb_prompt.md</a> ·  规则原文见 <a href="AGENTS.md">AGENTS.md</a></p>
+
+    <footer>lyb · 计算机24004 · 2026-10-26</footer>
+</div>
+</body>
+</html>
