@@ -38,3 +38,8 @@
 **模型**：DeepSeek-V4.1-Flash
 **提示词**：1、完成17-1.html，展示json。2、完成17-2.html 获取一个接口的数据并展示，接口可以跨域访问，使用fetch和原生代码实现。3、完成17-3.html 和 17-3-detail.html，显示列表和列表详情，数据来源于接口，使用fetch。列表 https://dummyjson.com/products?limit=8 ；详情 https://dummyjson.com/products/1 ，根据 ID 获取单个商品。
 ---
+
+**时间**：2026-11-02
+**模型**：DeepSeek-V4.1-Flash
+**提示词**：4、完成17-4.html，对远程数据接口进行测试，支持 get、post 等，显示返回的数据和错误提示信息，示例 post 接口 https://jsonplaceholder.typicode.com/posts 。5、完成17-5.html，展示 javascript 的两种定时器。6、完成17-6.html，使用 promise 和 async 完成异步操作的演示包饺子的流程。先买原料，买完原料之后同时和面、和馅。
+---
