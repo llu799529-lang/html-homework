@@ -63,3 +63,8 @@
 **模型**：DeepSeek-V4.1-Flash
 **提示词**：实现 18-6，基于 mermaid 的智能客服系统的流程图和 er 图，cdn 文件下载到 cdn 目录下。
 ---
+
+**时间**：2026-11-05
+**模型**：DeepSeek-V4.1-Flash
+**提示词**：18-7 实现基于 three.js 的两个图表，cdn 文件下载到 cdn 目录下；18-8 实现基于 three.js 或 echarts 的数据大屏，cdn 文件下载到 cdn 目录下。
+---
