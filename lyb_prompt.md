@@ -43,3 +43,8 @@
 **模型**：DeepSeek-V4.1-Flash
 **提示词**：4、完成17-4.html，对远程数据接口进行测试，支持 get、post 等，显示返回的数据和错误提示信息，示例 post 接口 https://jsonplaceholder.typicode.com/posts 。5、完成17-5.html，展示 javascript 的两种定时器。6、完成17-6.html，使用 promise 和 async 完成异步操作的演示包饺子的流程。先买原料，买完原料之后同时和面、和馅。
 ---
+
+**时间**：2026-11-05
+**模型**：DeepSeek-V4.1-Flash
+**提示词**：完成 18-1.html 和 18-2.html，第一个显示 canvas 动画，第二个显示基于 canvas 的全站系统的系统架构图（电商系统）。
+---
